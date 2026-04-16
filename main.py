@@ -24,10 +24,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     url = update.message.text.strip()
 
     if not url.startswith("http"):
-        await update.message.reply_text("Надішли мені посилання на відео 👇")
+        await update.message.reply_text("Ну шо? кинеш посилання на відіо 👇")
         return
 
-    msg = await update.message.reply_text("⏳ Завантажую...")
+    msg = await update.message.reply_text("⏳ Йой.. так ми тяжко")
 
     try:
         filepath = await asyncio.to_thread(download_video_sync, url)
@@ -41,13 +41,13 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await msg.delete()
 
     except Exception as e:
-        await msg.edit_text(f"❌ Помилка: {str(e)}")
+        await msg.edit_text(f"❌ БОНЬКУ ИСЕ СТРАХ: {str(e)}")
 
 def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
-    print("✅ Бот запущено!")
+    print("✅ ОО ПОЧАВ ИМ РОБИТИ!")
     app.run_polling()
 
 if __name__ == "__main__":
