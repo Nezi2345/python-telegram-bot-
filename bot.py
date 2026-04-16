@@ -4,8 +4,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
 import yt_dlp
 
-BOT_TOKEN = "8631321756:AAHA9KpQDvdbigxW4NWvj2YZK3qCmvCv8C4"
-
+BOT_TOKEN = os.environ.get("8631321756:AAHA9KpQDvdbigxW4NWvj2YZK3qCmvCv8C4")
 async def download_video(url: str) -> str | None:
     opts = {
         "format": "best[filesize<50M]/best",  # Telegram ліміт 50MB
